@@ -44,30 +44,28 @@ func (c *Calculator) ParseInput() error {
 
 	if isFirstRoman != isSecondRoman {
 		fmt.Println("неправильный формат ввода")
-		return nil
+		return errors.New("Ошибка")
 	}
 
 	c.FirstValue, err = strconv.Atoi(firstValueStr)
 	if err != nil {
 		fmt.Println("Ошибка при преобразовании первого значения", err)
-		return nil
-
+		return errors.New("Ошибка")
 	}
 
 	c.SecondValue, err = strconv.Atoi(secondValueStr)
 	if err != nil {
 		fmt.Println("Ошибка при преобразовании второго значения", err)
-		return nil
+		return errors.New("Ошибка")
 	}
-	return nil
+	return errors.New("Ошибка")
 }
 func NewCalculator(input string) *Calculator {
 	calculator := &Calculator{Input: input}
 	err := calculator.ParseInput()
 	if err != nil {
-
+		fmt.Println("Ошибка инициализации")
 	}
-
 	return calculator
 }
 
