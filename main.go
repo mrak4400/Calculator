@@ -23,7 +23,11 @@ func main() {
 			fmt.Println("Программа завершена.")
 			break
 		}
-		calc := calculator.NewCalculator(input)
+		calc, err := calculator.NewCalculator(input)
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
 		res := calc.Calculate()
 		fmt.Println("Результат: ", res)
 	}
